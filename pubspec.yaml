@@ -1,6 +1,6 @@
 name: spaced
-description: Add spacing to your flexbox.
-version: 1.0.0
+description: Add spacing to your flexbox
+version: 1.0.1
 homepage: https://github.com/hinryd/spaced
 
 environment:
