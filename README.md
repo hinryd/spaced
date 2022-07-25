@@ -13,18 +13,19 @@ and the Flutter guide for
 
 ## Spaced
 
-Basically a mimicking the `gap` property in a CSS `flexbox`
+Basically mimicking the `gap` property in a CSS `flexbox`
 
 ## Features
 
-- Provide `SpacedColumn` and `SpacedRow` widgets
+- `SpacedColumn`
+- `SpacedRow`
 
 ## Getting started
 
-`flutter pub add spaced`
+Add this package to your dependencies (`flutter pub add spaced`)
 
 ## Usage
 
-1. Add `Spaced` in front of your `Column` or `Row` widget
-2. Add `spacing` to property
-3. Profit!
+1. Add the word `Spaced` in front of your `Column` or `Row` widget
+2. Add `spacing` to the widget property
+3. Done 💪
