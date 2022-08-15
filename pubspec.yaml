@@ -1,6 +1,6 @@
 name: spaced
-description: Add spacing to your flexbox
-version: 1.0.1
+description: Add spacing in between your children in your flexbox
+version: 1.0.2
 homepage: https://github.com/hinryd/spaced
 
 environment:
