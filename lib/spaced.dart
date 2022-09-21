@@ -12,7 +12,7 @@ class SpacedFlex extends Flex {
     required this.spacing,
     List<Widget> children = const <Widget>[],
     required super.direction,
-    super.mainAxisAlignment = MainAxisAlignment.start,
+    super.mainAxisAlignment,
     super.key,
     super.mainAxisSize = MainAxisSize.max,
     super.crossAxisAlignment = CrossAxisAlignment.center,
@@ -21,10 +21,10 @@ class SpacedFlex extends Flex {
     super.textBaseline,
     super.clipBehavior = Clip.none,
   }) : super(
-            children: mainAxisAlignment == MainAxisAlignment.start ||
-                    mainAxisAlignment == MainAxisAlignment.center ||
-                    mainAxisAlignment == MainAxisAlignment.end ||
-                    !(spacing <= 0)
+            children: (mainAxisAlignment == MainAxisAlignment.start ||
+                        mainAxisAlignment == MainAxisAlignment.center ||
+                        mainAxisAlignment == MainAxisAlignment.end) &&
+                    children.isNotEmpty
                 ? (children
                     .expand((child) => [
                           child,
@@ -34,8 +34,11 @@ class SpacedFlex extends Flex {
                         ])
                     .toList()
                   ..removeLast())
-                : children);
+                : children) {
+    if (spacing < 0) throw RangeError.range(spacing, 0, null);
+  }
 
+  /// The width or height of the [SizedBox] between each child.
   final double spacing;
 }
 
@@ -48,7 +51,7 @@ class SpacedColumn extends Column {
   SpacedColumn({
     required this.spacing,
     List<Widget> children = const <Widget>[],
-    super.mainAxisAlignment = MainAxisAlignment.start,
+    super.mainAxisAlignment,
     super.key,
     super.crossAxisAlignment,
     super.mainAxisSize,
@@ -56,15 +59,17 @@ class SpacedColumn extends Column {
     super.textDirection,
     super.verticalDirection,
   }) : super(
-            children: mainAxisAlignment == MainAxisAlignment.start ||
-                    mainAxisAlignment == MainAxisAlignment.center ||
-                    mainAxisAlignment == MainAxisAlignment.end ||
-                    !(spacing <= 0)
+            children: (mainAxisAlignment == MainAxisAlignment.start ||
+                        mainAxisAlignment == MainAxisAlignment.center ||
+                        mainAxisAlignment == MainAxisAlignment.end) &&
+                    children.isNotEmpty
                 ? (children
                     .expand((child) => [child, SizedBox(height: spacing)])
                     .toList()
                   ..removeLast())
-                : children);
+                : children) {
+    if (spacing < 0) throw RangeError.range(spacing, 0, null);
+  }
 
   /// The height of the [SizedBox] between each child.
   final double spacing;
@@ -79,7 +84,7 @@ class SpacedRow extends Row {
   SpacedRow({
     required this.spacing,
     List<Widget> children = const <Widget>[],
-    super.mainAxisAlignment = MainAxisAlignment.start,
+    super.mainAxisAlignment,
     super.key,
     super.crossAxisAlignment,
     super.mainAxisSize,
@@ -87,15 +92,17 @@ class SpacedRow extends Row {
     super.textDirection,
     super.verticalDirection,
   }) : super(
-            children: mainAxisAlignment == MainAxisAlignment.start ||
-                    mainAxisAlignment == MainAxisAlignment.center ||
-                    mainAxisAlignment == MainAxisAlignment.end ||
-                    !(spacing <= 0)
+            children: (mainAxisAlignment == MainAxisAlignment.start ||
+                        mainAxisAlignment == MainAxisAlignment.center ||
+                        mainAxisAlignment == MainAxisAlignment.end) &&
+                    children.isNotEmpty
                 ? (children
                     .expand((child) => [child, SizedBox(width: spacing)])
                     .toList()
                   ..removeLast())
-                : children);
+                : children) {
+    if (spacing < 0) throw RangeError.range(spacing, 0, null);
+  }
 
   /// The width of the [SizedBox] between each child.
   final double spacing;
